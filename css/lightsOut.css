@@ -77,8 +77,81 @@ body{
 	to {transform: rotate(360deg);}
 }
 
+@keyframes glow{
+	0%, 100% {	
+		fill: #1495ff;
+		stroke:#1495ff;	
+	}
+	50% {
+		fill: #C7FFFF;
+		stroke: #C7FFFF;
+	}
+}
+@-moz-keyframes glow{
+	0%, 100% {	
+		fill: #1495ff;
+		stroke:#1495ff;	
+	}
+	50% {
+		fill: #C7FFFF;
+		stroke: #C7FFFF;
+	}
+}
+@-webkit-keyframes glow{
+	0%, 100% {	
+		fill: #1495ff;
+		stroke:#1495ff;	
+	}
+	50% {
+		fill: #C7FFFF;
+		stroke: #C7FFFF;
+	}
+}
+
+@keyframes stroke-glow{
+	0%, 100% {	
+		stroke:#1495ff;
+		fill: #1495ff;	
+	}
+	50% {
+		stroke: #7AFBFF;
+		fill: #007CE6;
+	}
+}
+@-moz-keyframes stroke-glow{
+	0%, 100% {	
+		stroke:#1495ff;	
+		fill: #1495ff;
+	}
+	50% {
+		stroke: #7AFBFF;
+		fill: #007CE6;
+	}
+}
+@-webkit-keyframes stroke-glow{
+	0%, 100% {	
+		stroke:#1495ff;	
+		fill: #1495ff;
+	}
+	50% {
+		stroke: #7AFBFF;
+		fill: #007CE6;
+	}
+}
+
 #reset-icon.spin{
 	animation: spin .5s 1;
 	-moz-animation: spin .5s 1;
 	-webkit-animation: spin .5s 1;
+}
+
+#raphael-container path[fill-opacity=".65"]{
+	animation: glow 8s ease-in infinite;
+	-moz-animation: glow 8s ease-in infinite;
+	-webkit-animation: glow 8s ease-in infinite;
+}
+#raphael-container path[fill-opacity=".25"]{
+	animation: stroke-glow 8s ease-in infinite;
+	-moz-animation: stroke-glow 8s ease-in infinite;
+	-webkit-animation: stroke-glow 8s ease-in infinite;
 }

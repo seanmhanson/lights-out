@@ -213,21 +213,19 @@ var lightsOut = function(){
 }();
 
 $(document).ready( function (){
-	$song.on('canplaythrough', function(){
-		$(".loading-icon").fadeOut(500, function(){
-			startMusic(true);
-			document.getElementById('intro').play();
-			$(".overlay-text").fadeIn(3000, function(){
-				$('.overlay-subtext').fadeIn(3000, 
-					function(){setTimeout(function(){
-						document.getElementById('lightswitch').play();
-						document.getElementById('intro').pause();
-						$('.overlay').hide();
-					}, 2000)
-				});
+	$(".loading-icon").fadeOut(500, function(){
+		startMusic(true);
+		document.getElementById('intro').play();
+		$(".overlay-text").fadeIn(3000, function(){
+			$('.overlay-subtext').fadeIn(3000, 
+				function(){setTimeout(function(){
+					document.getElementById('lightswitch').play();
+					document.getElementById('intro').pause();
+					$('.overlay').hide();
+				}, 2000)
 			});
 		});
-	});	
+	});
 });
 
 $(document).on("click", ".volume-control", function(){
