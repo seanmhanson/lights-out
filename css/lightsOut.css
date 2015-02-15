@@ -40,6 +40,9 @@ body{
 	cursor: pointer;
 }
 
+.disabled{
+	opacity: .5;
+}
 .overlay-text, .overlay-subtext{
 	display: none;
 	position: absolute;

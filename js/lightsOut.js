@@ -1,5 +1,8 @@
 var volume = true;
-	
+var music = true;
+var $drone = $('#drone')
+var $song = $('#song')
+
 var square = function(){
 	var x = 0;
 	var y = 0; 
@@ -208,6 +211,7 @@ var lightsOut = function(){
 }();
 
 $(document).ready( function (){
+	startMusic(true);
 	document.getElementById('intro').play();
 	$(".overlay-text").fadeIn(3000, function(){
 		$('.overlay-subtext').fadeIn(3000, 
@@ -218,6 +222,7 @@ $(document).ready( function (){
 			}, 2000)
 		});
 	});
+
 });
 
 $(document).on("click", ".volume-control", function(){
@@ -234,4 +239,46 @@ $(document).on("click", ".volume-control", function(){
 	setTimeout( function(){
 		$('#reset-icon').removeClass('spin');
 	}, 500);
+}).on("click", ".music-control", function(){
+	if (music){
+		$('.music-control i').addClass('disabled');
+		music = false;
+		stopMusic();
+	} else {
+		$('.music-control i').removeClass('disabled');
+		music = true;
+		startMusic(false);
+	}
 })
+
+var startMusic = function(intro){
+	$drone.on('ended', function(){
+		this.get(0).currentTime = 0;
+		this.get(0).play();
+	});
+	if (intro){
+		$drone.currentTime = 0;
+		$drone.get(0).volume = .4;
+		$drone.get(0).play();
+	} else {
+		$drone.currentTime = 0;
+		$drone.get(0).volume = 0;
+		$drone.get(0).play();
+		$drone.animate({volume: .4}, 3000);
+	}
+	setTimeout(function(){
+		if (music){
+			$song.currentTime = 0;
+			$song.get(0).volume = .04;
+			$song.get(0).play();
+		}
+	}, Math.floor((Math.random() * 15) + 31)*1000)
+}
+var stopMusic = function(){
+	$drone.animate({volume: 0}, 500);
+	$song.animate({volume: 0}, 500);
+	setTimeout(function(){
+		$drone.get(0).pause();
+		$song.get(0).pause();
+	}, 500);
+}
