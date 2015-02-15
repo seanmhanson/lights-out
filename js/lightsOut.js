@@ -1,7 +1,9 @@
 var volume = true;
 var music = true;
-var $drone = $('#drone')
-var $song = $('#song')
+var $drone = $('#drone');
+var $song = $('#song');
+var songEvent;
+var songIsPlaying = false;
 
 var square = function(){
 	var x = 0;
@@ -253,30 +255,46 @@ $(document).on("click", ".volume-control", function(){
 
 var startMusic = function(intro){
 	$drone.on('ended', function(){
-		this.get(0).currentTime = 0;
-		this.get(0).play();
+		this.currentTime = 0;
+		this.play();
 	});
+	$song.on('ended', function(){
+		songIsPlaying = false;
+		this.currentTime = 0;
+		setSongTimeout();
+	});
+
 	if (intro){
 		$drone.currentTime = 0;
 		$drone.get(0).volume = .4;
 		$drone.get(0).play();
 	} else {
-		$drone.currentTime = 0;
 		$drone.get(0).volume = 0;
 		$drone.get(0).play();
-		$drone.animate({volume: .4}, 3000);
+		$drone.animate({volume: .4}, 1000);
 	}
-	setTimeout(function(){
-		if (music){
-			$song.currentTime = 0;
-			$song.get(0).volume = .04;
-			$song.get(0).play();
-		}
-	}, Math.floor((Math.random() * 15) + 31)*1000)
+	if (songIsPlaying){
+		$song.get(0).volume = 0;
+		$song.get(0).play();
+		$song.animate({volume: .04}, 1000);
+	} else {
+		setSongTimeout();
+	}
 }
+
+var setSongTimeout = function(){
+	songEvent = setTimeout(function(){
+		songIsPlaying = true;
+		$song.currentTime = 0;
+		$song.get(0).volume = .04;
+		$song.get(0).play();
+		}, Math.floor((Math.random() * 15) + 31)*1000)
+};
+
 var stopMusic = function(){
 	$drone.animate({volume: 0}, 500);
 	$song.animate({volume: 0}, 500);
+	clearTimeout(songEvent)
 	setTimeout(function(){
 		$drone.get(0).pause();
 		$song.get(0).pause();
