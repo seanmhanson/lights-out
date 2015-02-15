@@ -26,7 +26,7 @@ body{
 	background-color: #111118;
 }
 
-.overlay-subtext, .overlay-text, .control{
+.overlay-subtext, .overlay-text, .control, .loading-icon{
 	color: #1495ff;
 	font-family: "Source Code Pro", sans-serif;
 	font-weight: 200;
@@ -43,7 +43,7 @@ body{
 .disabled{
 	opacity: .5;
 }
-.overlay-text, .overlay-subtext{
+.overlay-text, .overlay-subtext, .loading-icon{
 	display: none;
 	position: absolute;
 	top: 50%;
@@ -53,6 +53,10 @@ body{
 	transform: translateY(-50%);
 	text-align: center;
 	font-size: 48px;
+}
+
+.loading-icon{
+	display: block;
 }
 
 .overlay-subtext{

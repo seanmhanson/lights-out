@@ -204,7 +204,7 @@ var lightsOut = function(){
 			volume = true;
 		}
 		gameOn = true;
-	}
+	};
 
 	drawBoard();
 	publicResetGame();
@@ -213,18 +213,21 @@ var lightsOut = function(){
 }();
 
 $(document).ready( function (){
-	startMusic(true);
-	document.getElementById('intro').play();
-	$(".overlay-text").fadeIn(3000, function(){
-		$('.overlay-subtext').fadeIn(3000, 
-			function(){setTimeout(function(){
-				document.getElementById('lightswitch').play();
-				document.getElementById('intro').pause();
-				$('.overlay').hide();
-			}, 2000)
+	$song.on('canplaythrough', function(){
+		$(".loading-icon").fadeOut(500, function(){
+			startMusic(true);
+			document.getElementById('intro').play();
+			$(".overlay-text").fadeIn(3000, function(){
+				$('.overlay-subtext').fadeIn(3000, 
+					function(){setTimeout(function(){
+						document.getElementById('lightswitch').play();
+						document.getElementById('intro').pause();
+						$('.overlay').hide();
+					}, 2000)
+				});
+			});
 		});
-	});
-
+	});	
 });
 
 $(document).on("click", ".volume-control", function(){
@@ -251,7 +254,7 @@ $(document).on("click", ".volume-control", function(){
 		music = true;
 		startMusic(false);
 	}
-})
+});
 
 var startMusic = function(intro){
 	$drone.on('ended', function(){
@@ -280,7 +283,7 @@ var startMusic = function(intro){
 	} else {
 		setSongTimeout();
 	}
-}
+};
 
 var setSongTimeout = function(){
 	songEvent = setTimeout(function(){
@@ -299,4 +302,4 @@ var stopMusic = function(){
 		$drone.get(0).pause();
 		$song.get(0).pause();
 	}, 500);
-}
+};
