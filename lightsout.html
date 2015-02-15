@@ -1,0 +1,36 @@
+<!-- Attributions: 
+	 Lightswitch Sound Effects in Public Domain
+	 Crickets Sound Effect from Mike Koenig, http://soundbible.com/1192-Light-Rain-And-Crickets.html
+	 licensed under an Attribution 3.0 CC License -->
+
+<html>
+	<head>
+		<script src="js/raphael-min.js"></script>
+		<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<link href='http://fonts.googleapis.com/css?family=Source+Code+Pro:200,400,900' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<link href="css/lightsOut.css" rel="stylesheet" type="text/css">
+	</head>
+
+	<body>
+		<audio id="lightswitch" src="wav/lightSwitch.wav" preload="auto"></audio>
+		<audio id="intro" src="wav/intro.wav" preload="auto"></audio>
+		<audio id="smallClick0" src="wav/smallClick.wav" preload="auto"></audio>
+		<audio id="smallClick1" src="wav/smallClick.wav" preload="auto"></audio>
+		<audio id="smallClick2" src="wav/smallClick.wav" preload="auto"></audio>
+		<audio id="smallClick3" src="wav/smallClick.wav" preload="auto"></audio>
+		<audio id="smallClick4" src="wav/smallClick.wav" preload="auto"></audio>
+
+		<div class="overlay">
+			<div class="overlay-text">Lights Out</div>
+			<div class="overlay-subtext">(turn out all the lights)</div>
+		</div>
+		
+		<div id="raphael-container"></div>
+
+		<div class="control volume-control"><i class="fa fa-volume-up"></i></div>
+		<div class="control reset-control"><i id="reset-icon" class="fa fa-refresh"></i></div>
+		
+		<script src="js/lightsOut.js"></script>
+	</body>
+</html>
