@@ -1,5 +1,6 @@
 var volume = true;
 var music = true;
+var isometric = false;
 var $drone = $('#drone');
 var $song = $('#song');
 var songEvent;
@@ -69,7 +70,7 @@ var lightsOut = function(){
 	var COLS = ROWS;
 	var clickToggle = 0;
 
-	PAPER_WIDTH = $("#raphael-container").width();
+	PAPER_WIDTH = $("#raphael-container").width() - 30;
 	GUTTER_RATIO = .1;
 	var UNIT_WIDTH = PAPER_WIDTH/(ROWS + ROWS*GUTTER_RATIO + GUTTER_RATIO);
 	var GUTTER_WIDTH = UNIT_WIDTH*GUTTER_RATIO;
@@ -78,7 +79,7 @@ var lightsOut = function(){
 	
 	var UNIT_COLOR = "#1495ff";
 	var STROKE_COLOR = "#1495ff";
-	var OFF_OPACITY = ".25";
+	var OFF_OPACITY = ".1";
 	var ON_OPACITY = ".65";
 
 	var paper = Raphael("raphael-container", "100%", "100%");
@@ -251,6 +252,18 @@ $(document).on("click", ".volume-control", function(){
 		$('.music-control i').removeClass('disabled');
 		music = true;
 		startMusic(false);
+	}
+}).on("click", ".isometric-control", function(){
+	if (isometric){
+		$('.isometric-control i').removeClass('active');
+		$('svg').attr('class', '');
+		$('.isometric-control i').addClass('disabled');
+		isometric = false;
+	} else {
+		$('.isometric-control i').addClass('active');
+		$('svg').attr('class', 'isometric');
+		$('.isometric-control i').removeClass('disabled');
+		isometric = true;
 	}
 });
 

@@ -43,6 +43,23 @@ body{
 .disabled{
 	opacity: .5;
 }
+
+.isometric-control i, svg, path.square{
+	transition: transform 500ms;
+}
+
+.isometric-control i.active, svg.isometric{
+	-webkit-transform: rotateY(-30deg) rotateX(45deg);
+	-ms-transform: rotateY(-30deg) rotateX(45deg);
+	transform: rotateY(-30deg) rotateX(45deg);
+}
+
+svg.isometric path.square[fill-opacity='.1']{
+	-webkit-transform: translate(30px, 30px);
+	-ms-transform: translate(30px, 30px);
+	transform: translate(30px, 30px);
+}
+
 .overlay-text, .overlay-subtext, .loading-icon{
 	display: none;
 	position: absolute;
@@ -150,8 +167,13 @@ body{
 	-moz-animation: glow 8s ease-in infinite;
 	-webkit-animation: glow 8s ease-in infinite;
 }
-#raphael-container path[fill-opacity=".25"]{
+#raphael-container path[fill-opacity=".1"]{
 	animation: stroke-glow 8s ease-in infinite;
 	-moz-animation: stroke-glow 8s ease-in infinite;
 	-webkit-animation: stroke-glow 8s ease-in infinite;
+}
+#raphael-container path.no-glow{
+	animation: none !important;
+	-moz-animation: none !important;
+	-webkit-animation: none !important;
 }
